@@ -4,18 +4,14 @@ import { Sticky } from './Sticky';
 import { StickyForm } from './StickyForm';
 
 function App() {
-  const [dataArray, setDataArray] = useState(JSON.parse(localStorage.getItem('stickyNotes')) || [
-    { title: "Don't mind me", text:'i\'m just a dummy', id:1}
-  ]);
+  const [dataArray, setDataArray] = useState(JSON.parse(localStorage.getItem('stickyNotes')) || []);
   
   useEffect(() => {
     localStorage.setItem('stickyNotes', JSON.stringify(dataArray));
   }, [dataArray])
 
   const addSticky = (title,text) => {
-    console.log(title,text);
     const newSticky= { title:title , text:text, id: Date.now()};
-    console.log(newSticky);
     setDataArray((prev)=>{
       return ([...prev, newSticky]);
     });
@@ -23,8 +19,9 @@ function App() {
   };
 
   const removeSticky = (id) => {
-    setDataArray((prev) => prev.filter((data)=>(data.id !== id)));
-  };
+    console.log(id);
+    setDataArray((prev)=> prev.filter((data)=>(data.id !== id)));
+  };  
 
   return (
     <div id="board" className="App">
@@ -36,8 +33,7 @@ function App() {
           return (
           <Sticky 
               key={index}
-              title={data.title}
-              text={data.text}
+              data={data}
               removeSticky={removeSticky}  
             />
           )

@@ -1,12 +1,12 @@
 import React from "react";
 
-export const Sticky =({text, title, removeSticky}) =>{
+export const Sticky =({data, removeSticky}) =>{
     return (
         <div className="note">
-            <h2>{title}</h2>
-            <p>{text}</p>
+            <h2>{data.title}</h2>
+            <p>{data.text}</p>
             <button 
-                onClick={removeSticky}
+                onClick={() => removeSticky(data.id)}
                 className="bin">x</button>
         </div>
     );

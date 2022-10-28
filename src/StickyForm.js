@@ -6,8 +6,8 @@ export const StickyForm= ({addSticky}) => {
 
     const handleSubmit=(e) =>{
         console.log('');
-        e.preventDevault();
-        addSticky(text,title);
+        e.preventDefault();
+        addSticky(title,text);
         setTitle('');
         setText('');
     };
