@@ -31,10 +31,6 @@
   font-weight: 700;  
 }
 
-#button:hover {
-  
-}
-
 #container {
   display: flex;
   flex-wrap: wrap;

@@ -1,4 +1,5 @@
 import React, { useState} from "react";
+import { Note } from "./styles";
 
 export const StickyForm= ({addSticky}) => {
     const [ title, setTitle ] = useState('');
@@ -13,25 +14,24 @@ export const StickyForm= ({addSticky}) => {
     };
 
     return(
-        <form 
-            onSubmit={handleSubmit}
-            className="note"
-        >
-            <input
-                type="text"
-                name="title"
-                value={title}                
-                onChange = {((e)=>setTitle(e.target.value))}
-                placeholder= {"write whatever you like!"}
-                />   
-            <input
-                type="text"
-                name="text"
-                value={text}                
-                onChange = {((e)=>setText(e.target.value))}
-                placeholder= {"add some details!"}
-                />                
-            <input type="submit" value="Stick it!"/>
-        </form>
+        <Note>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    name="title"
+                    value={title}                
+                    onChange = {((e)=>setTitle(e.target.value))}
+                    placeholder= {"write whatever you like!"}
+                    />   
+                <input
+                    type="text"
+                    name="text"
+                    value={text}                
+                    onChange = {((e)=>setText(e.target.value))}
+                    placeholder= {"add some details!"}
+                    />                
+                <input type="submit" value="Stick it!"/>
+            </form>
+        </Note>
     )
 };

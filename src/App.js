@@ -1,4 +1,9 @@
-import './App.css';
+// import `css`and `ThemeProvider` from "@emotion/react" package
+/** @jsxImportSource @emotion/react */
+//import { css } from "@emotion/react";
+//import './App.css';
+import { Board, Container } from "./styles";
+
 import React, { useState, useEffect } from 'react';
 import { Sticky } from './Sticky';
 import { StickyForm } from './StickyForm';
@@ -24,11 +29,11 @@ function App() {
   };  
 
   return (
-    <div id="board" className="App">
-      <div className='container'>
-        <StickyForm 
+    <Board >
+      <StickyForm 
           addSticky={addSticky}
         />
+      <Container>
         {dataArray.map((data,index) =>{
           return (
           <Sticky 
@@ -38,8 +43,8 @@ function App() {
             />
           )
         })}
-      </div>
-    </div>
+      </Container>
+    </Board>
   );
 }
 
