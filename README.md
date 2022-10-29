@@ -3,7 +3,10 @@
 ## Descrition: ##
 My head can be chaotic at times... so I created a messageboard with sticky-notes. Now I can write short reminders for myself.
 
-## Techniques used:##
+See it in action here:
+https://my-noteboard.netlify.app/
+
+## Techniques used: ##
 JS: React.js, CSS, Emotion.js
 
 ## What I learned from this project: ##
