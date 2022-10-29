@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { Modal, Form, Input } from "./styles";
+import { Modal, Form, Input, TextArea } from "./styles";
 
 export const NoteForm= ({addNote,setIsOpen}) => {
     const [ title, setTitle ] = useState('');
@@ -28,13 +28,13 @@ export const NoteForm= ({addNote,setIsOpen}) => {
                         minLength={3}
                         maxLength={20}
                         />   
-                    <Input
+                    <TextArea
                         type="textarea"
                         name="text"
                         value={text}                
                         onChange = {((e)=>setText(e.target.value))}
                         placeholder= {"add some details!"}
-                        rows="3" cols="20"
+                        rows={3} cols={20}
                         maxLength={50}
                         />                
                     <Input type="submit" value="Stick it!"/>

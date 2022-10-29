@@ -104,3 +104,6 @@ export const Form = styled(PaperNote)`
 export const Input = styled.input`
     margin: 0.5em;
 `;
+export const TextArea = styled.textarea`
+    margin: 0.5em;
+`;
