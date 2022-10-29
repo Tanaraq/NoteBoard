@@ -1,7 +1,4 @@
-// import `css`and `ThemeProvider` from "@emotion/react" package
 /** @jsxImportSource @emotion/react */
-//import { css } from "@emotion/react";
-//import './App.css';
 import { Board, Container, Button } from "./styles";
 
 import React, { useState, useEffect } from 'react';
@@ -9,11 +6,16 @@ import { Note } from './Note';
 import { NoteForm } from './NoteForm';
 
 function App() {
-  const [dataArray, setDataArray] = useState(JSON.parse(localStorage.getItem('stickyNotes')) || []);
+  const [dataArray, setDataArray] = useState(JSON.parse(localStorage.getItem('Notes')) || 
+    [ {title:"Welcome!", text:"", id:1},
+      {title:"Click 'New Note'", text:"in the upperleft corner to start writing a new note.", id:1},
+      {title:"Click the pin", text:"to delete it (there's no getting it back!)", id:1},
+      {title:"", text:"Your notes will be saved in LocalStorage", id:1}]);
+
   const [isOpen, setIsOpen] = useState(false); //for the NoteForm-modal
   
   useEffect(() => {
-    localStorage.setItem('stickyNotes', JSON.stringify(dataArray));
+    localStorage.setItem('Notes', JSON.stringify(dataArray));
   }, [dataArray])
 
   const addNote = (title,text) => {
@@ -29,7 +31,8 @@ function App() {
 
   return (
     <Board >
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={() => setIsOpen(true)}
+              title="click to write a new note">
         New Note
       </Button>
 

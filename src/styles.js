@@ -20,7 +20,7 @@ export const Container = styled.div`
     width: 100%;
 `;
 
-export const Note = styled.div`
+export const PaperNote = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,8 +49,58 @@ export const Text = styled.p`
     font-size: 20px;
 `;
   
-export const Bin = styled.button`
+export const Pin = styled.button`
     position: absolute;
-    top: 5px;
-    right: 5px; 
+    top: 3px;
+    right: 42%; 
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 40px;    
+    font-weight: 500;
+    &:hover{ 
+        font-weight: 400;
+        top: -2px;
+    }
+`;
+
+export const Button = styled.button`    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+    border-radius: 3px;
+    box-shadow: #ffd 4px 4px;
+    background-color: #ffc;
+    margin: 10px;
+    padding:5px;
+    font-size: 16px;
+    font-weight: 600;
+    z-index:2;  
+    cursor: pointer;
+    &:hover{
+        border: 2px solid black;
+        box-shadow: #ffd 3px 3px;
+    }
+`;
+
+export const Modal = styled.div`
+    position: fixed;    
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.6); 
+    z-index: 5; 
+`;
+export const Form = styled(PaperNote)`
+    margin: 20% auto;
+    background-color: #ffc;
+    border-radius:3px;
+`;
+
+export const Input = styled.input`
+    margin: 0.5em;
 `;
