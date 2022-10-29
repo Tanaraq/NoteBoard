@@ -2,44 +2,49 @@
 /** @jsxImportSource @emotion/react */
 //import { css } from "@emotion/react";
 //import './App.css';
-import { Board, Container } from "./styles";
+import { Board, Container, Button } from "./styles";
 
 import React, { useState, useEffect } from 'react';
-import { Sticky } from './Sticky';
-import { StickyForm } from './StickyForm';
+import { Note } from './Note';
+import { NoteForm } from './NoteForm';
 
 function App() {
   const [dataArray, setDataArray] = useState(JSON.parse(localStorage.getItem('stickyNotes')) || []);
+  const [isOpen, setIsOpen] = useState(false); //for the NoteForm-modal
   
   useEffect(() => {
     localStorage.setItem('stickyNotes', JSON.stringify(dataArray));
   }, [dataArray])
 
-  const addSticky = (title,text) => {
-    const newSticky= { title:title , text:text, id: Date.now()};
+  const addNote = (title,text) => {
+    const newNote= { title:title , text:text, id: Date.now()};
     setDataArray((prev)=>{
-      return ([...prev, newSticky]);
+      return ([...prev, newNote]);
     });
-    console.log(dataArray);
   };
 
-  const removeSticky = (id) => {
-    console.log(id);
+  const removeNote = (id) => {
     setDataArray((prev)=> prev.filter((data)=>(data.id !== id)));
   };  
 
   return (
     <Board >
-      <StickyForm 
-          addSticky={addSticky}
-        />
+      <Button onClick={() => setIsOpen(true)}>
+        New Note
+      </Button>
+
+      {isOpen && <NoteForm 
+                    setIsOpen={setIsOpen} 
+                    addNote={addNote} 
+                  />}
+
       <Container>
         {dataArray.map((data,index) =>{
           return (
-          <Sticky 
+          <Note
               key={index}
               data={data}
-              removeSticky={removeSticky}  
+              removeNote={removeNote}  
             />
           )
         })}
